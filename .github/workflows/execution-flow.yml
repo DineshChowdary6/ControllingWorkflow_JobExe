@@ -1,4 +1,4 @@
-name: Website Deployment
+name: Controlling Workflows and Job Executions
 on:
   push:
     branches:
