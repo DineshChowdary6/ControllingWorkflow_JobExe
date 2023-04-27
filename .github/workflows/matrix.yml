@@ -7,6 +7,13 @@ jobs:
       matrix:
         node-verson: [12, 14, 16]
         operating-system: [ubuntu-latest, windows-latest]
+        # below this can be used to add single combinations
+        include:
+          - node_modules: 18
+            operating-system: ubuntu-latest 
+        exclude:
+          - node-modules: 12
+            operating-system: windows-latest
     # runs-on: ubuntu-latest
     runs-on: ${{ matrix.operating-system}}
     steps:

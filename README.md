@@ -22,3 +22,13 @@ https://github.com/actions/cache#outputs
 - caching node_modules when using *npm ci* is not recommended because *npm ci* will always delete any existing *node_modules* folder and re-create it. 
 - here we are preventing the *npm ci* step if cache *node_modules* folder is found
 - if we cache *node_modules* and conditionally run *npm ci* (only if no cached *node_modules* folder exists we are saving time,) 
+
+# Matrix
+
+
+ continue-on-error: true
+ 
+    strategy:
+      matrix:
+        node-verson: [12, 14, 16]
+        operating-system: [ubuntu-latest, windows-latest]
