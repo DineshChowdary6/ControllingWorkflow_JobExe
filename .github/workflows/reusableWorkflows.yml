@@ -7,9 +7,15 @@ on:
         required: false
         default: dist
         type: string
+    outputs:
+      result:
+        description: result of the deployable operation
+        value: ${{ jobs.deploy.outputs.outcome}}
 
 jobs:
   deploy:
+    outputs:
+      outcome: ${{ steps.set-result.outputs.step-result}}
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -20,3 +26,6 @@ jobs:
         run: ls
       - name: Output the DC information
         run: echo "Dinesh"
+      - name: set output result
+        id: set-result
+        run: echo "::set-output name=step-result::success"
