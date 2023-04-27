@@ -5,14 +5,14 @@ jobs:
     continue-on-error: true
     strategy:
       matrix:
-        node-verson: [12, 14, 16]
+        node-version: [12, 14, 16]
         operating-system: [ubuntu-latest, windows-latest]
         # below this can be used to add single combinations
         include:
-          - node_modules: 18
+          - node-version: 18
             operating-system: ubuntu-latest 
         exclude:
-          - node-modules: 12
+          - node-version: 12
             operating-system: windows-latest
     # runs-on: ubuntu-latest
     runs-on: ${{ matrix.operating-system}}
@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           #   node-version: 14
-          node-version: ${{ matrix.node-verson}}
+          node-version: ${{ matrix.node-version}}
 
       - name: Install the dependencies
         run: npm ci
